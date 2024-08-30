@@ -1,0 +1,20 @@
+{
+  "header": "Book Your Flight",
+  "roundTrip": "Round Trip",
+  "oneWay": "One-Way",
+  "multiCity": "Multi City",
+  "from": "From",
+  "to": "To",
+  "date": "Date",
+  "class": "Class",
+  "travellers": "Travellers",
+  "searchFlights": "Search Flights",
+  "viewMore": "View More",
+  "home": "Home",
+  "search": "Search",
+  "departureTime": "Depart",
+  "arrive": "Arrive",
+  "searchResult": "Search Result",
+  "flightsAvailable": "Flights Available"
+
+}

@@ -1,0 +1,19 @@
+{
+  "header": "احجز رحلتك",
+  "roundTrip": "ذهاب وعودة",
+  "oneWay": "ذهاب فقط",
+  "multiCity": "عدة مدن",
+  "from": "من",
+  "to": "إلى",
+  "date": "التاريخ",
+  "class": "الدرجة",
+  "travellers": "المسافرين",
+  "searchFlights": "بحث عن الرحلات",
+  "viewMore": "عرض المزيد",
+  "home": "الرئيسية",
+  "search": "بحث",
+  "departureTime": "المغادرة",
+  "arrive": "الوصول",
+  "searchResult": "نتيجة البحث",
+  "flightsAvailable": "الرحلات المتاحة"
+}
