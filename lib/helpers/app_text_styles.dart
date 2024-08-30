@@ -27,6 +27,9 @@ class AppCorners {
   static double xl2g = 20;
   static BorderRadius xl2gBorder = BorderRadius.all(xl2gRadius);
   static Radius xl2gRadius = Radius.circular(xl2g);
+
+  static BorderRadius xl2gBottomBorder =
+      BorderRadius.vertical(bottom: xl2gRadius);
 }
 
 class Fonts {
@@ -44,33 +47,48 @@ class AppTextStyles {
       fontWeight: FontWeight.bold,
       fontSize: 34,
       letterSpacing: -1,
+      color: Colors.white,
       height: 1.5);
 
   static TextStyle get h2 =>
       h1.copyWith(fontSize: 24, letterSpacing: -.5, height: 1.16);
+
   static TextStyle get h2_20 => h1.copyWith(
       fontSize: 20, letterSpacing: -.5, height: 1.16, color: Colors.white);
+
   static TextStyle get h2_18 =>
       h1.copyWith(fontSize: 18, letterSpacing: -.5, height: 1.16);
 
-  static TextStyle get h3 =>
-      h1.copyWith(fontSize: 14, letterSpacing: -.05, height: 1.29);
+  static TextStyle get h3 => h1.copyWith(
+      fontSize: 14, letterSpacing: -.05, height: 1.29, color: Colors.white);
 
-  static TextStyle get h4 =>
-      h1.copyWith(fontSize: 13, letterSpacing: -.05, height: 1.29);
+  static TextStyle get h4 => h1.copyWith(
+      fontSize: 13, letterSpacing: -.05, height: 1.29, color: Colors.white);
 
-  static TextStyle get title1 =>
-      raleway.copyWith(fontWeight: FontWeight.bold, fontSize: 16, height: 1.31);
+  static TextStyle get title1 => raleway.copyWith(
+      fontWeight: FontWeight.bold,
+      fontSize: 16,
+      height: 1.31,
+      color: Colors.white);
 
-  static TextStyle get title2 =>
-      title1.copyWith(fontWeight: FontWeight.w500, fontSize: 14, height: 1.36);
+  static TextStyle get title2 => title1.copyWith(
+      fontWeight: FontWeight.w500,
+      fontSize: 14,
+      height: 1.36,
+      color: Colors.white);
 
   static TextStyle get body1 => raleway.copyWith(
-      fontWeight: FontWeight.normal, fontSize: 14, height: 1.71);
+      fontWeight: FontWeight.normal,
+      fontSize: 14,
+      height: 1.71,
+      color: Colors.white);
 
-  static TextStyle get body2 =>
-      body1.copyWith(fontSize: 12, height: 1.5, letterSpacing: .2);
+  static TextStyle get body2 => body1.copyWith(
+      fontSize: 12, height: 1.5, letterSpacing: .2, color: Colors.white);
 
-  static TextStyle get body3 =>
-      body1.copyWith(fontSize: 12, height: 1.5, fontWeight: FontWeight.bold);
+  static TextStyle get body3 => body1.copyWith(
+      fontSize: 12,
+      height: 1.5,
+      fontWeight: FontWeight.bold,
+      color: Colors.white);
 }

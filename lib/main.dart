@@ -12,6 +12,7 @@ import 'helpers/application_localization.dart';
 import 'helpers/constants.dart';
 import 'helpers/utils.dart';
 import 'injection.dart';
+import 'presentaion/screens/home_view.dart';
 
 void main() {
   configureDependencies();
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
       statusBarIconBrightness: Brightness.dark,
     ));
     return ScreenUtilInit(
-      designSize: const Size(428, 926),
+      designSize: const Size(375, 812),
       builder: (context, child) => AppMainProvider(
         flightRepository: flightRepository,
         child: Consumer<AppLanguageProvider>(builder: (context, model, child) {
@@ -57,7 +58,7 @@ class MyApp extends StatelessWidget {
                   ),
                 ),
               ),
-              home: Container());
+              home: HomeView());
         }),
       ),
     );
