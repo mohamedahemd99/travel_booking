@@ -18,7 +18,7 @@ class AppLanguageProvider extends ChangeNotifier {
 
   fetchLocale() {
     debugPrint("Fetching the current local");
-    _appLocale = Locale('en');
+    _appLocale = Locale(PrefManager.getLang());
     // _appLocale = Locale(Platform.localeName.split("_").first);
     return Null;
   }

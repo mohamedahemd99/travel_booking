@@ -4,10 +4,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:travel_booking/helpers/app_image_paths.dart';
-import 'package:travel_booking/helpers/utils.dart';
 import 'package:travel_booking/presentaion/widgets/app_button_widget.dart';
 
 import '../../data/models/flight_type_enum.dart';
+import '../../helpers/application_localization.dart';
 import '../provider/flight_provider.dart';
 
 class BookingCard extends StatefulWidget {
@@ -38,7 +38,7 @@ class _BookingCardState extends State<BookingCard> {
                 children: [
                   Expanded(
                     child: _buildAutocompleteField(
-                        label: 'from'.tr,
+                        label: AppLocalizations.of(context)!.translate('from'),
                         onChanged: (value) =>
                             flightProvider.setSelectedFrom(value)),
                   ),
@@ -47,7 +47,7 @@ class _BookingCardState extends State<BookingCard> {
                       child: Image.asset(AppImages.change)),
                   Expanded(
                     child: _buildAutocompleteField(
-                        label: 'to'.tr,
+                        label: AppLocalizations.of(context)!.translate('to'),
                         onChanged: (value) =>
                             flightProvider.setSelectedTo(value)),
                   ),
@@ -59,7 +59,8 @@ class _BookingCardState extends State<BookingCard> {
                       children: [
                         Expanded(
                           child: _buildDropdownField(
-                            label: 'travellers'.tr,
+                            label: AppLocalizations.of(context)!
+                                .translate('travellers'),
                             value: flightProvider.selectedTravelers,
                             items: _travelersOptions,
                             onChanged: (value) =>
@@ -69,7 +70,8 @@ class _BookingCardState extends State<BookingCard> {
                         SizedBox(width: 16.0.w),
                         Expanded(
                           child: _buildDropdownField(
-                            label: 'class'.tr,
+                            label: AppLocalizations.of(context)!
+                                .translate('class'),
                             value: flightProvider.selectedClass,
                             items: _classOptions,
                             onChanged: (value) =>
@@ -98,7 +100,8 @@ class _BookingCardState extends State<BookingCard> {
                             }
                           }
                         },
-                        name: "searchFlights".tr),
+                        name: AppLocalizations.of(context)!
+                            .translate("searchFlights")),
                   )
                 ],
               ),
@@ -142,6 +145,7 @@ class _BookingCardState extends State<BookingCard> {
     required String label,
     String? value,
     required ValueChanged<String?> onChanged,
+    double? dropdownWidth, // Add a parameter for dropdown width
   }) {
     return Autocomplete<String>(
       optionsBuilder: (TextEditingValue textEditingValue) {
@@ -159,7 +163,34 @@ class _BookingCardState extends State<BookingCard> {
             labelText: label,
             border: const OutlineInputBorder(),
             focusedBorder: const OutlineInputBorder(),
-            hintText: value ?? 'Select $label',
+            hintText: value ?? label,
+          ),
+        );
+      },
+      optionsViewBuilder: (context, onSelected, options) {
+        return Align(
+          alignment: Alignment.topLeft,
+          child: Material(
+            elevation: 4.0,
+            child: SizedBox(
+              width: dropdownWidth ?? 200.w, // Set the width of the dropdown
+              child: ListView.builder(
+                padding: EdgeInsets.zero,
+                itemCount: options.length,
+                itemBuilder: (BuildContext context, int index) {
+                  final String option = options.elementAt(index);
+
+                  return GestureDetector(
+                    onTap: () {
+                      onSelected(option);
+                    },
+                    child: ListTile(
+                      title: Text(option),
+                    ),
+                  );
+                },
+              ),
+            ),
           ),
         );
       },
@@ -181,7 +212,7 @@ class _BookingCardState extends State<BookingCard> {
         }
       },
       decoration: InputDecoration(
-        labelText: 'date'.tr,
+        labelText: AppLocalizations.of(context)!.translate('date'),
         border: const OutlineInputBorder(),
         hintText: Provider.of<FlightProvider>(context).selectedDateRange == null
             ? 'Select Date Range'

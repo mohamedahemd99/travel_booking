@@ -3,6 +3,7 @@ import 'package:travel_booking/helpers/app_text_styles.dart';
 import 'package:travel_booking/helpers/utils.dart';
 
 import '../../data/models/flight_type_enum.dart';
+import '../../helpers/application_localization.dart';
 
 class FlightTypeSelection extends StatefulWidget {
   const FlightTypeSelection({super.key});
@@ -19,9 +20,12 @@ class _FlightTypeSelectionState extends State<FlightTypeSelection> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        _buildTextButton(FlightType.roundTrip.name.tr),
-        _buildTextButton(FlightType.oneWay.name.tr),
-        _buildTextButton(FlightType.multiCity.name.tr),
+        _buildTextButton(
+            AppLocalizations.of(context)!.translate(FlightType.roundTrip.name)),
+        _buildTextButton(
+            AppLocalizations.of(context)!.translate(FlightType.oneWay.name)),
+        _buildTextButton(
+            AppLocalizations.of(context)!.translate(FlightType.multiCity.name)),
       ],
     );
   }

@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:travel_booking/helpers/app_image_paths.dart';
 import 'package:travel_booking/helpers/app_text_styles.dart';
+import 'package:travel_booking/helpers/application_localization.dart';
 import 'package:travel_booking/helpers/size_extension.dart';
-import 'package:travel_booking/helpers/utils.dart';
 import 'package:travel_booking/presentaion/provider/flight_provider.dart';
 import 'package:travel_booking/presentaion/widgets/flight_type_selection.dart';
+import 'package:travel_booking/presentaion/widgets/language_buttom.dart';
 
 import '../../helpers/custom_colors.dart';
+import '../provider/app_language_provider.dart';
 
 class HeaderWidget extends StatelessWidget {
   const HeaderWidget(
@@ -44,7 +46,9 @@ class HeaderWidget extends StatelessWidget {
         if (isResultScreen)
           Positioned(
               top: 20.h,
-              left: 20,
+              left: !Provider.of<AppLanguageProvider>(context).isArabic
+                  ? 20
+                  : MediaQuery.of(context).size.width - 60,
               child: InkWell(
                 onTap: () => Provider.of<FlightProvider>(context, listen: false)
                     .getBack(),
@@ -55,9 +59,15 @@ class HeaderWidget extends StatelessWidget {
               )),
         Positioned(
             top: 20.h,
+            right: !Provider.of<AppLanguageProvider>(context).isArabic
+                ? 20
+                : MediaQuery.of(context).size.width - 60,
+            child: const LanguageButton()),
+        Positioned(
+            top: 20.h,
             child: isResultScreen
                 ? Text(
-                    "searchResult".tr,
+                    AppLocalizations.of(context)!.translate("searchResult"),
                     style: AppTextStyles.title1,
                   )
                 : Image.asset(AppImages.logo)),
@@ -72,7 +82,7 @@ class HeaderWidget extends StatelessWidget {
                 children: [
                   if (!isResultScreen)
                     Text(
-                      "header".tr,
+                      AppLocalizations.of(context)!.translate("header"),
                       style: AppTextStyles.h1,
                     ),
                   if (isResultScreen)
@@ -98,7 +108,7 @@ class HeaderWidget extends StatelessWidget {
           Positioned(
             top: 250.h,
             child: Text(
-              "$numberOfFlight ${"flightsAvailable".tr}",
+              "$numberOfFlight ${AppLocalizations.of(context)!.translate("flightsAvailable")}",
               style: AppTextStyles.title2,
             ),
           )

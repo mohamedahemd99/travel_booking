@@ -2,10 +2,10 @@ import 'package:circle_nav_bar/circle_nav_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:travel_booking/helpers/custom_colors.dart';
 import 'package:travel_booking/helpers/size_extension.dart';
-import 'package:travel_booking/helpers/utils.dart';
 
 import '../../helpers/app_image_paths.dart';
 import '../../helpers/app_text_styles.dart';
+import '../../helpers/application_localization.dart';
 
 class BottomNavigationBarWidget extends StatelessWidget {
   const BottomNavigationBarWidget({super.key});
@@ -25,7 +25,7 @@ class BottomNavigationBarWidget extends StatelessWidget {
           children: [
             Image.asset(AppImages.home),
             Text(
-              "home".tr,
+              AppLocalizations.of(context)!.translate("home"),
               style: AppTextStyles.body1,
             )
           ],
@@ -35,7 +35,7 @@ class BottomNavigationBarWidget extends StatelessWidget {
           children: [
             Image.asset(AppImages.search),
             Text(
-              "search".tr,
+              AppLocalizations.of(context)!.translate("search"),
               style: AppTextStyles.body1,
             )
           ],

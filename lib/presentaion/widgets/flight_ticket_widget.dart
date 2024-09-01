@@ -5,9 +5,9 @@ import 'package:ticket_widget/ticket_widget.dart';
 import 'package:travel_booking/helpers/app_text_styles.dart';
 import 'package:travel_booking/helpers/custom_colors.dart';
 import 'package:travel_booking/helpers/size_extension.dart';
-import 'package:travel_booking/helpers/utils.dart';
 
 import '../../data/models/flight_model.dart';
+import '../../helpers/application_localization.dart';
 
 class FlightTicketWidget extends StatelessWidget {
   const FlightTicketWidget({super.key, this.model});
@@ -55,7 +55,8 @@ class FlightTicketWidget extends StatelessWidget {
                       child: Column(
                         children: [
                           Text(
-                            "departureTime".tr,
+                            AppLocalizations.of(context)!
+                                .translate("departureTime"),
                             style: AppTextStyles.body1
                                 .copyWith(color: CustomColors.greyAppColor),
                           ),
@@ -85,7 +86,7 @@ class FlightTicketWidget extends StatelessWidget {
                       child: Column(
                         children: [
                           Text(
-                            "arrive".tr,
+                            AppLocalizations.of(context)!.translate("arrive"),
                             style: AppTextStyles.body1
                                 .copyWith(color: CustomColors.greyAppColor),
                           ),
@@ -99,7 +100,7 @@ class FlightTicketWidget extends StatelessWidget {
                 ),
               ),
               Center(
-                child: Text("viewMore".tr,
+                child: Text(AppLocalizations.of(context)!.translate("viewMore"),
                     style: AppTextStyles.title2
                         .copyWith(color: CustomColors.primaryColor)),
               )
