@@ -6,4 +6,6 @@ abstract class AppImages {
   static const String world = "${_base}world.png";
   static const String home = "${_base}home.png";
   static const String search = "${_base}search.png";
+  static const String desArr = "${_base}des_arr.png";
+  static const String change = "${_base}change.png";
 }

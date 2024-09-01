@@ -14,7 +14,7 @@ class _FlightApiService implements FlightApiService {
     this.baseUrl,
     this.errorLogger,
   }) {
-    baseUrl ??= 'https://serpapi.com/';
+    baseUrl ??= 'https://sky-scrapper.p.rapidapi.com/api/v2/';
   }
 
   final Dio _dio;
@@ -25,27 +25,43 @@ class _FlightApiService implements FlightApiService {
 
   @override
   Future<AllFightsRespondModel?> searchFlights({
-    String engine = "google_flights",
-    required String departureId,
-    required String arrivalId,
-    required String outboundDate,
-    required String returnDate,
-    String currency = "USD",
-    String hl = "en",
     required String apiKey,
+    String apiHost = "sky-scrapper.p.rapidapi.com",
+    required String originSkyId,
+    required String destinationSkyId,
+    required String originEntityId,
+    required String destinationEntityId,
+    required String date,
+    required String returnDate,
+    String cabinClass = "economy",
+    int adults = 1,
+    String sortBy = "best",
+    String currency = "USD",
+    String market = "en-US",
+    String countryCode = "US",
+    int limit = 1,
   }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
-      r'engine': engine,
-      r'departure_id': departureId,
-      r'arrival_id': arrivalId,
-      r'outbound_date': outboundDate,
-      r'return_date': returnDate,
+      r'originSkyId': originSkyId,
+      r'destinationSkyId': destinationSkyId,
+      r'originEntityId': originEntityId,
+      r'destinationEntityId': destinationEntityId,
+      r'date': date,
+      r'returnDate': returnDate,
+      r'cabinClass': cabinClass,
+      r'adults': adults,
+      r'sortBy': sortBy,
       r'currency': currency,
-      r'hl': hl,
-      r'api_key': apiKey,
+      r'market': market,
+      r'countryCode': countryCode,
+      r'limit': limit,
     };
-    final _headers = <String, dynamic>{};
+    final _headers = <String, dynamic>{
+      r'X-RapidAPI-Key': apiKey,
+      r'X-RapidAPI-Host': apiHost,
+    };
+    _headers.removeWhere((k, v) => v == null);
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<AllFightsRespondModel>(Options(
       method: 'GET',
@@ -54,7 +70,7 @@ class _FlightApiService implements FlightApiService {
     )
         .compose(
           _dio.options,
-          'search.json',
+          'flights/searchFlights',
           queryParameters: queryParameters,
           data: _data,
         )

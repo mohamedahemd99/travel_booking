@@ -1,9 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:travel_booking/helpers/app_image_paths.dart';
 import 'package:travel_booking/helpers/app_text_styles.dart';
 import 'package:travel_booking/helpers/size_extension.dart';
 import 'package:travel_booking/helpers/utils.dart';
+import 'package:travel_booking/presentaion/provider/flight_provider.dart';
 import 'package:travel_booking/presentaion/widgets/flight_type_selection.dart';
 
 import '../../helpers/custom_colors.dart';
@@ -40,6 +41,18 @@ class HeaderWidget extends StatelessWidget {
           fit: BoxFit.contain,
         ),
         Positioned(top: 30.h, child: Image.asset(AppImages.multiDestenation)),
+        if (isResultScreen)
+          Positioned(
+              top: 20.h,
+              left: 20,
+              child: InkWell(
+                onTap: () => Provider.of<FlightProvider>(context, listen: false)
+                    .getBack(),
+                child: const Icon(
+                  Icons.arrow_back_ios,
+                  color: CustomColors.whiteColor,
+                ),
+              )),
         Positioned(
             top: 20.h,
             child: isResultScreen

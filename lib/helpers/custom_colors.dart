@@ -8,5 +8,6 @@ class CustomColors {
   static const Color whiteColor = Color(0xffFFFFFF);
   static const Color blackColor = Color(0xff000000);
   static const Color backgroundAppColor = Color(0xFFF4F4F4);
+  static const Color greyAppColor = Color(0xFFB5B2B2);
   static const Color redAppColor = Color(0xffFF4444);
 }

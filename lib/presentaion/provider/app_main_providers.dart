@@ -20,7 +20,7 @@ class AppMainProvider extends StatelessWidget {
           create: (_) => AppLanguageProvider()..fetchLocale(),
         ),
         ChangeNotifierProvider<FlightProvider>(
-            create: (_) => FlightProvider(flightRepository)),
+            create: (_) => FlightProvider(flightRepository: flightRepository)),
       ],
       child: child!,
     );
